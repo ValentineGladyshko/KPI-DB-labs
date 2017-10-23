@@ -49,6 +49,7 @@
             this.buttonClearTable.TabIndex = 0;
             this.buttonClearTable.Text = "Очистити таблицю";
             this.buttonClearTable.UseVisualStyleBackColor = true;
+            this.buttonClearTable.Click += new System.EventHandler(this.buttonClearTable_Click);
             // 
             // buttonFillTable
             // 
@@ -58,11 +59,12 @@
             this.buttonFillTable.TabIndex = 1;
             this.buttonFillTable.Text = "Наповнити таблицю";
             this.buttonFillTable.UseVisualStyleBackColor = true;
+            this.buttonFillTable.Click += new System.EventHandler(this.buttonFillTable_Click);
             // 
             // CountRows
             // 
             this.CountRows.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.CountRows.Location = new System.Drawing.Point(295, 57);
+            this.CountRows.Location = new System.Drawing.Point(291, 105);
             this.CountRows.Name = "CountRows";
             this.CountRows.Size = new System.Drawing.Size(121, 23);
             this.CountRows.TabIndex = 2;
@@ -71,7 +73,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(292, 38);
+            this.label1.Location = new System.Drawing.Point(288, 86);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(126, 13);
             this.label1.TabIndex = 3;
@@ -80,7 +82,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(292, 86);
+            this.label2.Location = new System.Drawing.Point(415, 86);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(87, 13);
             this.label2.TabIndex = 5;
@@ -89,8 +91,9 @@
             // timeFill
             // 
             this.timeFill.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.timeFill.Location = new System.Drawing.Point(295, 105);
+            this.timeFill.Location = new System.Drawing.Point(418, 105);
             this.timeFill.Name = "timeFill";
+            this.timeFill.ReadOnly = true;
             this.timeFill.Size = new System.Drawing.Size(121, 23);
             this.timeFill.TabIndex = 4;
             this.timeFill.Text = "";
@@ -98,7 +101,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(292, 134);
+            this.label3.Location = new System.Drawing.Point(288, 134);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(87, 13);
             this.label3.TabIndex = 8;
@@ -107,8 +110,9 @@
             // timeExecute
             // 
             this.timeExecute.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.timeExecute.Location = new System.Drawing.Point(295, 153);
+            this.timeExecute.Location = new System.Drawing.Point(291, 153);
             this.timeExecute.Name = "timeExecute";
+            this.timeExecute.ReadOnly = true;
             this.timeExecute.Size = new System.Drawing.Size(121, 23);
             this.timeExecute.TabIndex = 7;
             this.timeExecute.Text = "";
@@ -121,6 +125,7 @@
             this.buttonExecuteQuery.TabIndex = 6;
             this.buttonExecuteQuery.Text = "Виконати запит";
             this.buttonExecuteQuery.UseVisualStyleBackColor = true;
+            this.buttonExecuteQuery.Click += new System.EventHandler(this.buttonExecuteQuery_Click);
             // 
             // buttonCreateIndex
             // 
@@ -130,6 +135,7 @@
             this.buttonCreateIndex.TabIndex = 9;
             this.buttonCreateIndex.Text = "Створити індекс";
             this.buttonCreateIndex.UseVisualStyleBackColor = true;
+            this.buttonCreateIndex.Click += new System.EventHandler(this.buttonCreateIndex_Click);
             // 
             // buttonDeleteIndex
             // 
@@ -139,6 +145,7 @@
             this.buttonDeleteIndex.TabIndex = 10;
             this.buttonDeleteIndex.Text = "Видалити індекс";
             this.buttonDeleteIndex.UseVisualStyleBackColor = true;
+            this.buttonDeleteIndex.Click += new System.EventHandler(this.buttonDeleteIndex_Click);
             // 
             // Form1
             // 
