@@ -15,32 +15,43 @@ namespace lab2
     {
         SqlConnection connection;
         public Form1()
-        {   
-                InitializeComponent();
-                connection = new SqlConnection(@"Data Source = VALENTINE\SQLEXPRESS; Initial Catalog = Kpi2; Integrated Security = True");
-            }
+        {
+            InitializeComponent();
+            connection = new SqlConnection(@"Data Source = VALENTINE\SQLEXPRESS; Initial Catalog = Kpi2; Integrated Security = True");
+        }
 
         private void buttonClearTable_Click(object sender, EventArgs e)
         {
 
             connection.Open();
-            string queryString =
-            " CREATE TABLE[Clients](" +
-            "[ClientID] INT IDENTITY(1,1) NOT NULL," +
-            "[FirstName] NVARCHAR(255) NOT NULL," +
-            "[LastName] NVARCHAR(255) NOT NULL," +
-            "[MiddleName] NVARCHAR(255)NOT NULL," +
-            "[Phone] NVARCHAR(255)," +
-            "CONSTRAINT PK_ClientID PRIMARY KEY CLUSTERED(ClientID))";
-            SqlCommand command = new SqlCommand(
-            queryString, connection);
+            string queryString = "TRUNCATE TABLE [Clients]";
+            //string queryString =
+            //"CREATE TABLE[Clients](" +
+            //"[ClientID] INT IDENTITY(1,1) NOT NULL," +
+            //"[FirstName] NVARCHAR(255) NOT NULL," +
+            //"[LastName] NVARCHAR(255) NOT NULL," +
+            //"[MiddleName] NVARCHAR(255)NOT NULL," +
+            //"CONSTRAINT PK_ClientID PRIMARY KEY CLUSTERED(ClientID))";
+            SqlCommand command = new SqlCommand(queryString, connection);
             command.ExecuteNonQuery();
             connection.Close();
         }
 
         private void buttonFillTable_Click(object sender, EventArgs e)
         {
-
+            connection.Open();
+            int rowCount = Convert.ToInt32(CountRows.Text);
+            string queryString = "TRUNCATE TABLE [Clients]";
+            //string queryString =
+            //"CREATE TABLE[Clients](" +
+            //"[ClientID] INT IDENTITY(1,1) NOT NULL," +
+            //"[FirstName] NVARCHAR(255) NOT NULL," +
+            //"[LastName] NVARCHAR(255) NOT NULL," +
+            //"[MiddleName] NVARCHAR(255)NOT NULL," +
+            //"CONSTRAINT PK_ClientID PRIMARY KEY CLUSTERED(ClientID))";
+            SqlCommand command = new SqlCommand(queryString, connection);
+            command.ExecuteNonQuery();
+            connection.Close();
         }
 
         private void buttonExecuteQuery_Click(object sender, EventArgs e)
@@ -56,6 +67,11 @@ namespace lab2
         private void buttonDeleteIndex_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void Form1_Closing(object sender, CancelEventArgs e)
+        {
+            connection.Dispose();
         }
     }
 }
