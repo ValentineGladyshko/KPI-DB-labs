@@ -41,11 +41,13 @@
             this.buttonDeleteIndex = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.timeClear = new System.Windows.Forms.RichTextBox();
+            this.timeCreate = new System.Windows.Forms.RichTextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // buttonClearTable
             // 
-            this.buttonClearTable.Location = new System.Drawing.Point(164, 38);
+            this.buttonClearTable.Location = new System.Drawing.Point(56, 35);
             this.buttonClearTable.Name = "buttonClearTable";
             this.buttonClearTable.Size = new System.Drawing.Size(121, 42);
             this.buttonClearTable.TabIndex = 0;
@@ -55,7 +57,7 @@
             // 
             // buttonFillTable
             // 
-            this.buttonFillTable.Location = new System.Drawing.Point(164, 86);
+            this.buttonFillTable.Location = new System.Drawing.Point(56, 83);
             this.buttonFillTable.Name = "buttonFillTable";
             this.buttonFillTable.Size = new System.Drawing.Size(121, 42);
             this.buttonFillTable.TabIndex = 1;
@@ -66,7 +68,7 @@
             // CountRows
             // 
             this.CountRows.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.CountRows.Location = new System.Drawing.Point(291, 105);
+            this.CountRows.Location = new System.Drawing.Point(183, 102);
             this.CountRows.Name = "CountRows";
             this.CountRows.Size = new System.Drawing.Size(121, 23);
             this.CountRows.TabIndex = 2;
@@ -75,7 +77,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(288, 86);
+            this.label1.Location = new System.Drawing.Point(180, 83);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(126, 13);
             this.label1.TabIndex = 3;
@@ -84,7 +86,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(415, 86);
+            this.label2.Location = new System.Drawing.Point(307, 83);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(87, 13);
             this.label2.TabIndex = 5;
@@ -93,7 +95,7 @@
             // timeFill
             // 
             this.timeFill.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.timeFill.Location = new System.Drawing.Point(418, 105);
+            this.timeFill.Location = new System.Drawing.Point(310, 102);
             this.timeFill.Name = "timeFill";
             this.timeFill.ReadOnly = true;
             this.timeFill.Size = new System.Drawing.Size(121, 23);
@@ -103,7 +105,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(288, 134);
+            this.label3.Location = new System.Drawing.Point(180, 131);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(87, 13);
             this.label3.TabIndex = 8;
@@ -112,7 +114,7 @@
             // timeExecute
             // 
             this.timeExecute.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.timeExecute.Location = new System.Drawing.Point(291, 153);
+            this.timeExecute.Location = new System.Drawing.Point(183, 150);
             this.timeExecute.Name = "timeExecute";
             this.timeExecute.ReadOnly = true;
             this.timeExecute.Size = new System.Drawing.Size(121, 23);
@@ -121,7 +123,7 @@
             // 
             // buttonExecuteQuery
             // 
-            this.buttonExecuteQuery.Location = new System.Drawing.Point(164, 134);
+            this.buttonExecuteQuery.Location = new System.Drawing.Point(56, 131);
             this.buttonExecuteQuery.Name = "buttonExecuteQuery";
             this.buttonExecuteQuery.Size = new System.Drawing.Size(121, 42);
             this.buttonExecuteQuery.TabIndex = 6;
@@ -131,7 +133,7 @@
             // 
             // buttonCreateIndex
             // 
-            this.buttonCreateIndex.Location = new System.Drawing.Point(164, 182);
+            this.buttonCreateIndex.Location = new System.Drawing.Point(56, 179);
             this.buttonCreateIndex.Name = "buttonCreateIndex";
             this.buttonCreateIndex.Size = new System.Drawing.Size(121, 42);
             this.buttonCreateIndex.TabIndex = 9;
@@ -141,7 +143,7 @@
             // 
             // buttonDeleteIndex
             // 
-            this.buttonDeleteIndex.Location = new System.Drawing.Point(164, 230);
+            this.buttonDeleteIndex.Location = new System.Drawing.Point(56, 227);
             this.buttonDeleteIndex.Name = "buttonDeleteIndex";
             this.buttonDeleteIndex.Size = new System.Drawing.Size(121, 42);
             this.buttonDeleteIndex.TabIndex = 10;
@@ -152,7 +154,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(288, 38);
+            this.label4.Location = new System.Drawing.Point(180, 35);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(87, 13);
             this.label4.TabIndex = 12;
@@ -162,18 +164,40 @@
             // 
             this.timeClear.BackColor = System.Drawing.SystemColors.Control;
             this.timeClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.timeClear.Location = new System.Drawing.Point(291, 57);
+            this.timeClear.Location = new System.Drawing.Point(183, 54);
             this.timeClear.Name = "timeClear";
             this.timeClear.ReadOnly = true;
             this.timeClear.Size = new System.Drawing.Size(121, 23);
             this.timeClear.TabIndex = 13;
             this.timeClear.Text = "";
             // 
+            // timeCreate
+            // 
+            this.timeCreate.BackColor = System.Drawing.SystemColors.Control;
+            this.timeCreate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.timeCreate.Location = new System.Drawing.Point(183, 198);
+            this.timeCreate.Name = "timeCreate";
+            this.timeCreate.ReadOnly = true;
+            this.timeCreate.Size = new System.Drawing.Size(121, 23);
+            this.timeCreate.TabIndex = 15;
+            this.timeCreate.Text = "";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(180, 179);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(87, 13);
+            this.label5.TabIndex = 14;
+            this.label5.Text = "Час виконання:";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(587, 331);
+            this.ClientSize = new System.Drawing.Size(488, 308);
+            this.Controls.Add(this.timeCreate);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.timeClear);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.buttonDeleteIndex);
@@ -210,6 +234,8 @@
         private System.Windows.Forms.Button buttonDeleteIndex;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.RichTextBox timeClear;
+        private System.Windows.Forms.RichTextBox timeCreate;
+        private System.Windows.Forms.Label label5;
     }
 }
 
