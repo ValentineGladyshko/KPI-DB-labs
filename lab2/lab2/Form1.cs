@@ -41,7 +41,7 @@ namespace lab2
 
                 "CREATE TABLE [Complaints] (" +
                 "[ComplaintID] INT IDENTITY(1,1) NOT NULL," +
-                "[Date] DATE NOT NULL," +
+                "[Price] NVARCHAR(255) NOT NULL," +
                 "[ClientID] INT NOT NULL," +
                 "CONSTRAINT FK_ClientID FOREIGN KEY(ClientID) REFERENCES[Clients]([ClientID])," +
                 "CONSTRAINT PK_ComplaintID PRIMARY KEY CLUSTERED(ComplaintID))";
@@ -56,13 +56,13 @@ namespace lab2
             stopWatch.Start();
 
             connection.Open();
-            string queryString = 
+            string queryString =
                 "TRUNCATE TABLE [Complaints] " +
                 "ALTER TABLE [Complaints] " +
                 "DROP CONSTRAINT FK_ClientID " +
-                "TRUNCATE TABLE [Clients] " +
-                "ALTER TABLE [Complaints] " +
-                "ADD CONSTRAINT FK_ClientID FOREIGN KEY(ClientID) REFERENCES[Clients]([ClientID])";
+                "TRUNCATE TABLE [Clients]"; //+
+                //"ALTER TABLE [Complaints] " +
+               // "ADD CONSTRAINT FK_ClientID FOREIGN KEY(ClientID) REFERENCES[Clients]([ClientID])";
             SqlCommand command = new SqlCommand(queryString, connection);
             command.ExecuteNonQuery();
             connection.Close();
@@ -79,17 +79,46 @@ namespace lab2
             connection.Open();
 
             int rowCount = Convert.ToInt32(CountRows.Text);
-            Random random = new Random();
-            
-            for (int i = 0; i < rowCount; i++)
-            {
-                string queryString =
-                "INSERT INTO [Clients] ([FirstName], [LastName], [MiddleName])" +
-                "VALUES" + "('" + random.Next() + "', '" + random.Next() + "', '" + random.Next() + "')";
-                SqlCommand command = new SqlCommand(queryString, connection);
-                command.ExecuteNonQuery();
-            }
 
+            Random random = new Random();
+
+            DataTable table1 = new DataTable();
+            table1.Columns.Add("ClientID", typeof(int));
+            table1.Columns.Add("FirstName", typeof(string));
+            table1.Columns.Add("LastName", typeof(string));
+            table1.Columns.Add("MiddleName", typeof(string));
+
+            for (int i = 0; i < rowCount; i++)
+                table1.Rows.Add(new object[] {
+                            i + 1,
+                            random.Next(),
+                            random.Next(),
+                            random.Next() });
+
+            SqlBulkCopy bulkCopy = new SqlBulkCopy(connection);
+            bulkCopy.DestinationTableName = "[Clients]";
+            bulkCopy.WriteToServer(table1);
+
+            DataTable table2 = new DataTable();
+            table2.Columns.Add("ComplaintID", typeof(int));
+            table2.Columns.Add("Price", typeof(string));
+            table2.Columns.Add("ClientID", typeof(int));
+
+            for (int i = 0; i < rowCount * 2; i++)
+                table1.Rows.Add(new object[] {
+                            i + 1,
+                            ((10 * random.Next(0, 1000)).ToString() + "$"),
+                            random.Next(1, rowCount) });
+
+            SqlBulkCopy bulkCopy1 = new SqlBulkCopy(connection);
+            bulkCopy1.DestinationTableName = "[Complaints]";
+            bulkCopy1.WriteToServer(table1);
+
+            table2 = null;
+            table1 = null;
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
+            GC.Collect();
             connection.Close();
             stopWatch.Stop();
             timeFill.Text = (stopWatch.ElapsedMilliseconds / 1000.0).ToString() + "s";
@@ -102,28 +131,39 @@ namespace lab2
 
             connection.Open();
             string queryString =
-                "TRUNCATE TABLE [Complaints] " +
-                "ALTER TABLE [Complaints] " +
-                "DROP CONSTRAINT FK_ClientID " +
-                "TRUNCATE TABLE [Clients] " +
-                "ALTER TABLE [Complaints] " +
-                "ADD CONSTRAINT FK_ClientID FOREIGN KEY(ClientID) REFERENCES[Clients]([ClientID])";
+                "SELECT [Price]" +
+                "FROM [Complaints] AS[CO]" +
+                "JOIN [Clients] AS[CL]" +
+                "    ON CO.ClientID = CL.ClientID " +
+                "WHERE [Price] = '1000$'";
             SqlCommand command = new SqlCommand(queryString, connection);
             command.ExecuteNonQuery();
             connection.Close();
 
             stopWatch.Stop();
-            timeClear.Text = (stopWatch.ElapsedMilliseconds / 1000.0).ToString() + "s";
+            timeExecute.Text = (stopWatch.ElapsedMilliseconds / 1000.0).ToString() + "s";
         }
 
         private void buttonCreateIndex_Click(object sender, EventArgs e)
         {
-
+            connection.Open();
+            string queryString =
+                 "IF NOT EXISTS(SELECT * FROM sysindexes WHERE name = 'Index1')" +
+                "CREATE NONCLUSTERED INDEX Index1 ON [Complaints]([Price])";
+            SqlCommand command = new SqlCommand(queryString, connection);
+            command.ExecuteNonQuery();
+            connection.Close();
         }
 
         private void buttonDeleteIndex_Click(object sender, EventArgs e)
         {
-
+            connection.Open();
+            string queryString =
+                "IF EXISTS(SELECT * FROM sysindexes WHERE name = 'Index1')" +
+                "DROP INDEX [Index1] ON [dbo].[Complaints]";
+            SqlCommand command = new SqlCommand(queryString, connection);
+            command.ExecuteNonQuery();
+            connection.Close();
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
