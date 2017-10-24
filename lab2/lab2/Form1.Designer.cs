@@ -39,6 +39,8 @@
             this.buttonExecuteQuery = new System.Windows.Forms.Button();
             this.buttonCreateIndex = new System.Windows.Forms.Button();
             this.buttonDeleteIndex = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.timeClear = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
             // buttonClearTable
@@ -147,11 +149,33 @@
             this.buttonDeleteIndex.UseVisualStyleBackColor = true;
             this.buttonDeleteIndex.Click += new System.EventHandler(this.buttonDeleteIndex_Click);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(288, 38);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(87, 13);
+            this.label4.TabIndex = 12;
+            this.label4.Text = "Час виконання:";
+            // 
+            // timeClear
+            // 
+            this.timeClear.BackColor = System.Drawing.SystemColors.Control;
+            this.timeClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.timeClear.Location = new System.Drawing.Point(291, 57);
+            this.timeClear.Name = "timeClear";
+            this.timeClear.ReadOnly = true;
+            this.timeClear.Size = new System.Drawing.Size(121, 23);
+            this.timeClear.TabIndex = 13;
+            this.timeClear.Text = "";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(587, 331);
+            this.Controls.Add(this.timeClear);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.buttonDeleteIndex);
             this.Controls.Add(this.buttonCreateIndex);
             this.Controls.Add(this.label3);
@@ -165,6 +189,7 @@
             this.Controls.Add(this.buttonClearTable);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -183,6 +208,8 @@
         private System.Windows.Forms.Button buttonExecuteQuery;
         private System.Windows.Forms.Button buttonCreateIndex;
         private System.Windows.Forms.Button buttonDeleteIndex;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.RichTextBox timeClear;
     }
 }
 
