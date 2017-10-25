@@ -138,7 +138,7 @@ namespace lab2
                 "FROM [Complaints] AS [CO]" +
                 "JOIN [Clients] AS [CL]" +
                 "    ON CO.ClientID = CL.ClientID " +
-                "WHERE [Price] = '1000$'";
+                "WHERE [Price] = '%1000$'";
             SqlCommand command = new SqlCommand(queryString, connection);
             command.ExecuteNonQuery();
             connection.Close();
